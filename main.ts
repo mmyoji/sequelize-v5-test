@@ -2,7 +2,15 @@ import { Sequelize, Model, DataTypes, Op } from "sequelize";
 
 const sequelize = new Sequelize("sqlite::memory:");
 
-class User extends Model {}
+class User extends Model {
+  readonly id: number;
+  username: string;
+  age: number | null;
+  birthday: Date;
+
+  readonly createdAt: Date;
+  readonly updatedAt: Date;
+}
 
 User.init(
   {
@@ -23,10 +31,11 @@ async function main() {
 
   console.log(user.toJSON());
 
-  const users = await User.findAll({
+  const users: User[] = await User.findAll({
     where: {
+      // @ts-ignore
       age: {
-        [Op.ne]: null,
+        [Op.not]: null,
       },
     },
   });
