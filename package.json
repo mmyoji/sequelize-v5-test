@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "sequelize": "^5.22.5",
+    "sequelize": "^6.28.0",
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {
